@@ -2,6 +2,7 @@ package ru.netology;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -33,8 +34,9 @@ public class ErrorCardWithDeliveryTest {
         $("[data-test-id='city'].input_invalid .input__sub")
                 .shouldHave(Condition.exactText("Доставка в выбранный город недоступна"));
     }
+
     @Test
-    public void test3(){// неверный номер телефона
+    public void test3() {// неверный номер телефона
         open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Москва");
         String currentDate = generateDate(5, "dd.MM.yyyy");
@@ -47,8 +49,9 @@ public class ErrorCardWithDeliveryTest {
         $("[data-test-id='phone'].input_invalid .input__sub")
                 .shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
+
     @Test
-    public void test4(){ // имя на латинице
+    public void test4() { // имя на латинице
         open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Москва");
         String currentDate = generateDate(5, "dd.MM.yyyy");
@@ -61,8 +64,9 @@ public class ErrorCardWithDeliveryTest {
         $("[data-test-id='name'].input_invalid .input__sub")
                 .shouldHave(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
+
     @Test
-    public void test5(){ // нет голочки согласия
+    public void test5() { // нет голочки согласия
         open("http://localhost:9999");
         $("[data-test-id='city'] input").setValue("Москва");
         String currentDate = generateDate(5, "dd.MM.yyyy");
@@ -74,6 +78,6 @@ public class ErrorCardWithDeliveryTest {
         $("button.button").click();
         $("[data-test-id='agreement'].input_invalid").isDisplayed();
     }
-    }
+}
 
 
