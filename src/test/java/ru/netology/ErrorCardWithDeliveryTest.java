@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.visible;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
 public class ErrorCardWithDeliveryTest {
@@ -76,7 +77,9 @@ public class ErrorCardWithDeliveryTest {
         $("[data-test-id='phone'] input").setValue("+79613908874");
         //$("[data-test-id='agreement']").click();
         $("button.button").click();
-        $("[data-test-id='agreement'].input_invalid").isDisplayed();
+        $("[data-test-id='agreement'].input_invalid").shouldBe(visible); // Для проверки видимости в Selenide
+        // Вы можете использовать ассерт shouldBe и условие visible.
+
     }
 }
 
