@@ -16,7 +16,6 @@ public class CardWithDeliveryTest {
     private String generateDate(int addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
     }
-
     @Test
     public void enteringValidData() { // Ввод валидных данных
         open("http://localhost:9999");
